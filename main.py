@@ -97,6 +97,4 @@ if __name__ == "__main__":
         else:
             translatedAnswer = answer
 
-        print(f"\nanswer: {answer}\n")
-
         print(f"\nპასუხი: {translatedAnswer}\n")

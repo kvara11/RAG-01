@@ -39,7 +39,6 @@ def setup_chroma_db():
     try:
         loader = PyPDFLoader(PDF_PATH)
         all_pages = loader.load()
-        # Ensure you load the whole document if you want a complete DB
         pages = all_pages[:]
         print(f"Loaded {len(pages)} pages from {PDF_PATH}")
     except Exception as e:
@@ -61,15 +60,11 @@ def setup_chroma_db():
         persist_directory=PERSIST_DIR,
     )
 
-    # 🌟 CRUCIAL STEP: Call .persist() to write to disk 🌟
-    # Note: For newer versions of chromadb/langchain, this is usually
-    # handled automatically when the object is destroyed, but explicitly
-    # calling it guarantees the write.
     vectorstore.persist()
-    print(f"Created and saved new Chroma DB to {PERSIST_DIR} using .persist()")
+    print(f"Created  {PERSIST_DIR}")
     return vectorstore
 
 
 if __name__ == "__main__":
     setup_chroma_db()
-    print("\nChroma DB setup complete.")
+    print("\n  DB saved.")
